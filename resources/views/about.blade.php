@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body>
-        <nav x-data="{ open: false, dropdown: false }"
+    <nav x-data="{ open: false, dropdown: false }"
         class="flex items-center justify-between px-6 md:px-20 h-20 sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-gray-100">
 
         <div class="text-xl md:text-2xl font-bold text-black flex items-center gap-3">
@@ -34,16 +34,16 @@
                 </div>
             </div>
             <a href="{{ url('/about') }}" class="text-black hover:text-blue-600">About</a>
-            <a href="" class="text-black hover:text-blue-600">Product</a>
-            <a href="=" class="text-black hover:text-blue-600">Contact</a>
+            <a href="{{ url('/product') }}" class="text-black hover:text-blue-600">Product</a>
+            <a href="{{ url('/contact') }}" class="text-black hover:text-blue-600">Contact</a>
         </div>
 
         <div class="hidden md:flex gap-3">
             <button class="border border-blue-600 text-blue-600 px-4 md:px-6 py-2 text-sm md:text-base rounded-lg">
-                <a href="">Login</a>
+                <a href="{{ url('/admin')}}">Login</a>
             </button>
             <button class="bg-blue-600 text-white px-4 md:px-6 py-2 rounded-xl">
-                <a href="">Register</a>
+                <a href="{{ url('/admin/register')}}">Register</a>
             </button>
         </div>
         <button @click="open = !open; dropdown = false" class="md:hidden text-3xl" aria-label="Toggle menu">
@@ -71,8 +71,10 @@
                 <a href="/product" class="hover:text-blue-600">Product</a>
                 <a href="/contact" class="hover:text-blue-600">Contact</a>
                 <div class="pt-2 flex gap-3">
-                    <button class="flex-1 text-blue-600 px-4 py-2 rounded-lg"><a href="">Login</a></button>
-                    <button class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg"><a href="">Register</a></button>
+                    <button class="flex-1 text-blue-600 px-4 py-2 rounded-lg"><a
+                            href="{{ url('/admin')}}">Login</a></button>
+                    <button class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg"><a
+                            href="{{ url('/admin/register')}}">Register</a></button>
                 </div>
             </div>
         </div>

@@ -42,10 +42,10 @@
 
         <div class="hidden md:flex gap-3">
             <button class="border border-blue-600 text-blue-600 px-4 md:px-6 py-2 text-sm md:text-base rounded-lg">
-                <a href="{{ url('/login') }}">Login</a>
+                <a href="{{ url('/admin')}}">Login</a>
             </button>
             <button class="bg-blue-600 text-white px-4 md:px-6 py-2 rounded-xl">
-                <a href="{{ url('/daftar') }}">Register</a>
+                <a href="{{ url('/admin/register')}}">Register</a>
             </button>
         </div>
         <button @click="open = !open; dropdown = false" class="md:hidden text-3xl" aria-label="Toggle menu">
@@ -74,9 +74,9 @@
                 <a href="/contact" class="hover:text-blue-600">Contact</a>
                 <div class="pt-2 flex gap-3">
                     <button class="flex-1 text-blue-600 px-4 py-2 rounded-lg"><a
-                            href="{{ url('/login') }}">Login</a></button>
+                            href="{{ url('/admin')}}">Login</a></button>
                     <button class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg"><a
-                            href="{{ url('/daftar') }}">Register</a></button>
+                            href="{{ url('/admin/register')}}">Register</a></button>
                 </div>
             </div>
         </div>
@@ -202,10 +202,10 @@
         </template>
     </div>
 
-    <!-- Desktop Version -->
+
     <div class="hidden md:flex flex-col md:flex-row items-start gap-8 md:gap-10 py-6">
 
-        <!-- Sidebar List -->
+
         <div class="flex md:flex-col gap-4 md:gap-5">
             <div @click="selected = 1"
                  :class="selected === 1 ? 'bg-gray-200 shadow-lg' : 'bg-transparent'"
@@ -241,7 +241,6 @@
             </div>
         </div>
 
-        <!-- Review Box -->
         <div class="md:pl-6 lg:pl-10 md:w-[600px]">
             <p x-text="reviews[selected]"
                class="text-xl md:text-2xl text-gray-700 border border-gray-200 rounded-lg p-5 bg-white/70 ">
