@@ -73,15 +73,17 @@
                 <a href="/product" class="hover:text-blue-600">Product</a>
                 <a href="/contact" class="hover:text-blue-600">Contact</a>
                 <div class="pt-2 flex gap-3">
-                    <button class="flex-1 text-blue-600 px-4 py-2 rounded-lg"><a href="{{ url('/login') }}">Login</a></button>
-                    <button class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg"><a href="{{ url('/daftar') }}">Register</a></button>
+                    <button class="flex-1 text-blue-600 px-4 py-2 rounded-lg"><a
+                            href="{{ url('/login') }}">Login</a></button>
+                    <button class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg"><a
+                            href="{{ url('/daftar') }}">Register</a></button>
                 </div>
             </div>
         </div>
     </nav>
 
 
- <div class="flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-20 py-12 animate-slideUp">
+    <div class="flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-20 py-12 animate-slideUp">
         <div class="text-center md:text-left">
             <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold">Smart Solutions<br>for Growing SMEs</h1>
             <p class="text-lg md:text-2xl text-gray-400 pt-4">
@@ -135,14 +137,14 @@
         </div>
     </div>
 
-
-    <div class="animate-slideUp px-6 md:px-20 mt-30" x-data="{
+<div class="animate-slideUp px-6 md:px-20 mt-30" 
+     x-data="{
         selected: 1,
         interval: null,
         reviews: {
-            1: 'Catherine: Initially doubtful, the outcome surpassed all my anticipations. The powerful analytics and reporting features offered crucial perspectives on our business metrics, enabling us to implement informed decisions.',
-            2: 'Ella: The platform has simplified product management and boosted our sales dramatically. Couldn’t be happier with the results!',
-            3: 'Delynn: Great experience! The technology support made our growth faster and more sustainable.'
+            1: 'Initially doubtful, the outcome surpassed all my anticipations. The powerful analytics and reporting features offered crucial perspectives.',
+            2: 'The platform has simplified product management and boosted our sales dramatically. Couldn\'t be happier with the results!',
+            3: 'Great experience! The technology support made our growth faster and more sustainable than ever before.'
         },
         startAutoSlide() {
             if (window.innerWidth < 768) {
@@ -163,292 +165,206 @@
                 block: 'nearest'
             });
         }
-    }" x-init="startAutoSlide()"
-        @mouseenter="stopAutoSlide()" @mouseleave="startAutoSlide()">
+     }"
+     x-init="startAutoSlide()"
+     @mouseenter="stopAutoSlide()" 
+     @mouseleave="startAutoSlide()">
 
-        <div x-ref="slider"
-            class="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-4 w-full px-4 pr-8 cursor-grab active:cursor-grabbing"
-            @mousedown="isDown = true; startX = $event.pageX - $refs.slider.offsetLeft; scrollLeft = $refs.slider.scrollLeft"
-            @mouseleave="isDown = false" @mouseup="isDown = false"
-            @mousemove="
-          if(!isDown) return;
-          $event.preventDefault();
-          const x = $event.pageX - $refs.slider.offsetLeft;
-          const walk = (x - startX) * 1.5;
-          $refs.slider.scrollLeft = scrollLeft - walk;
-       "
-            x-data="{ isDown: false, startX: 0, scrollLeft: 0 }">
+    <!-- Mobile Slider -->
+    <div x-ref="slider"
+         class="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-4 w-full px-4 pr-8 cursor-grab active:cursor-grabbing"
+         @mousedown="isDown = true; startX = $event.pageX - $refs.slider.offsetLeft; scrollLeft = $refs.slider.scrollLeft"
+         @mouseleave="isDown = false" 
+         @mouseup="isDown = false"
+         @mousemove="
+            if(!isDown) return;
+            $event.preventDefault();
+            const x = $event.pageX - $refs.slider.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            $refs.slider.scrollLeft = scrollLeft - walk;
+         "
+         x-data="{ isDown: false, startX: 0, scrollLeft: 0 }">
 
-            <template x-for="i in [1,2,3]" :key="i">
-                <div x-ref="'card' + i" @click="selected = i; scrollToSelected()"
-                    class="flex-shrink-0 w-[85%] sm:w-[300px] snap-center bg-white rounded-xl shadow-md border border-gray-100 p-4 cursor-pointer flex flex-col items-center text-center transition-transform duration-300"
-                    :class="selected === i ? 'scale-100 ring-2 ring-blue-600' : ''">
-                    <img :src="i === 1 ? '{{ asset('asset/Delynn.jpeg') }}' : (i === 2 ? '{{ asset('asset/toy.jpeg') }}' :
-                        '{{ asset('asset/Ella.jpeg') }}')"
-                        class="w-16 h-16 rounded-full mb-3 object-cover"
-                        :class="selected === i ? 'ring-4 ring-blue-600' : ''">
-                    <p class="font-semibold text-lg"
-                        x-text="i === 1 ? 'Catherine Bennett' : (i === 2 ? 'Ella' : 'Delynn')"></p>
-                    <p class="text-sm text-gray-500">Founder, Creative</p>
-                    <p class="text-sm text-gray-600 mt-3" x-text="reviews[i]"></p>
-                </div>
-            </template>
-        </div>
+        <template x-for="i in [1,2,3]" :key="i">
+            <div x-ref="'card' + i" 
+                 @click="selected = i; scrollToSelected()"
+                 class="flex-shrink-0 w-[280px] min-h-[220px] snap-center bg-white rounded-xl shadow-md border border-gray-100 p-5 cursor-pointer flex flex-col items-center text-center">
 
-        <div class="flex md:hidden justify-center gap-2 mt-10">
-            <template x-for="i in [1,2,3]" :key="'dot-' + i">
-                <button @click="selected = i; scrollToSelected()" class="w-3 h-3 rounded-full transition-all"
-                    :class="selected === i ? 'bg-blue-600 w-5' : 'bg-gray-300'"></button>
-            </template>
-        </div>
+                <img :src="i === 1 ? '{{ asset('asset/Delynn.jpeg') }}' : (i === 2 ? '{{ asset('asset/toy.jpeg') }}' : '{{ asset('asset/Ella.jpeg') }}')"
+                     class="w-16 h-16 rounded-full mb-4 object-cover">
 
-        <div class="hidden md:flex flex-col md:flex-row items-start gap-8 md:gap-10 py-6">
-            <div class="flex md:flex-col gap-4 md:gap-5">
-                <div @click="selected = 1"
-                    :class="selected === 1 ? 'bg-gray-200 shadow-lg scale-105' : 'bg-transparent'"
-                    class="flex items-center gap-4 rounded-full px-5 py-3 w-max cursor-pointer transition-all duration-300">
-                    <img src="{{ asset('asset/Delynn.jpeg') }}"
-                        :class="selected === 1 ? 'ring-4 ring-blue-600 animate-fadeIn' : 'animate-fadeIn'"
-                        class="w-14 h-14 rounded-full" alt="Catherine">
-                    <div>
-                        <p class="font-semibold text-lg">Catherine Bennett</p>
-                        <p class="text-gray-500">Founder, Creative</p>
-                    </div>
-                </div>
+                <p class="font-semibold text-lg mb-1"
+                   x-text="i === 1 ? 'Catherine Bennett' : (i === 2 ? 'Ella' : 'Delynn')"></p>
+                <p class="text-sm text-gray-500 mb-3">Founder, Creative</p>
+                <p class="text-sm text-gray-600 leading-relaxed flex-1 line-clamp-4" 
+                   x-text="reviews[i]"></p>
+            </div>
+        </template>
+    </div>
 
-                <div @click="selected = 2"
-                    :class="selected === 2 ? 'bg-gray-200 shadow-lg scale-105' : 'bg-transparent'"
-                    class="flex items-center gap-4 rounded-full px-5 py-3 w-max cursor-pointer transition-all duration-300">
-                    <img src="{{ asset('asset/toy.jpeg') }}"
-                        :class="selected === 2 ? 'ring-4 ring-blue-600 animate-fadeIn' : 'animate-fadeIn'"
-                        class="w-14 h-14 rounded-full" alt="Ella">
-                    <div>
-                        <p class="font-semibold text-lg">Ella</p>
-                        <p class="text-gray-500">Founder, Creative</p>
-                    </div>
-                </div>
+    <!-- Desktop Version -->
+    <div class="hidden md:flex flex-col md:flex-row items-start gap-8 md:gap-10 py-6">
 
-                <div @click="selected = 3"
-                    :class="selected === 3 ? 'bg-gray-200 shadow-lg scale-105' : 'bg-transparent'"
-                    class="flex items-center gap-4 rounded-full px-5 py-3 w-max cursor-pointer transition-all duration-300">
-                    <img src="{{ asset('asset/Ella.jpeg') }}"
-                        :class="selected === 3 ? 'ring-4 ring-blue-600 animate-fadeIn' : 'animate-fadeIn'"
-                        class="w-14 h-14 rounded-full" alt="Delynn">
-                    <div>
-                        <p class="font-semibold text-lg">Delynn</p>
-                        <p class="text-gray-500">Founder, Creative</p>
-                    </div>
+        <!-- Sidebar List -->
+        <div class="flex md:flex-col gap-4 md:gap-5">
+            <div @click="selected = 1"
+                 :class="selected === 1 ? 'bg-gray-200 shadow-lg' : 'bg-transparent'"
+                 class="flex items-center gap-4 rounded-full px-5 py-3 w-max cursor-pointer">
+                <img src="{{ asset('asset/Delynn.jpeg') }}"
+                     class="w-14 h-14 rounded-full" alt="Catherine">
+                <div>
+                    <p class="font-semibold text-lg">Catherine Bennett</p>
+                    <p class="text-gray-500">Founder, Creative</p>
                 </div>
             </div>
 
-            <div class="md:pl-6 lg:pl-10 md:w-[600px]">
-                <p x-text="reviews[selected]"
-                    :class="{
-                        'animate-fadeIn text-blue-600': selected === 1,
-                        'animate-fadeIn text-blue-600': selected === 2,
-                        'animate-fadeIn text-blue-600': selected === 3
-                    }"
-                    class="text-xl md:text-2xl text-gray-700 border border-gray-200 rounded-lg p-5 bg-white/70">
-                </p>
+            <div @click="selected = 2"
+                 :class="selected === 2 ? 'bg-gray-200 shadow-lg' : 'bg-transparent'"
+                 class="flex items-center gap-4 rounded-full px-5 py-3 w-max cursor-pointer">
+                <img src="{{ asset('asset/toy.jpeg') }}"
+                     class="w-14 h-14 rounded-full" alt="Ella">
+                <div>
+                    <p class="font-semibold text-lg">Ella</p>
+                    <p class="text-gray-500">Founder, Creative</p>
+                </div>
             </div>
+
+            <div @click="selected = 3"
+                 :class="selected === 3 ? 'bg-gray-200 shadow-lg' : 'bg-transparent'"
+                 class="flex items-center gap-4 rounded-full px-5 py-3 w-max cursor-pointer">
+                <img src="{{ asset('asset/Ella.jpeg') }}"
+                     class="w-14 h-14 rounded-full" alt="Delynn">
+                <div>
+                    <p class="font-semibold text-lg">Delynn</p>
+                    <p class="text-gray-500">Founder, Creative</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Box -->
+        <div class="md:pl-6 lg:pl-10 md:w-[600px]">
+            <p x-text="reviews[selected]"
+               class="text-xl md:text-2xl text-gray-700 border border-gray-200 rounded-lg p-5 bg-white/70 ">
+            </p>
         </div>
     </div>
-    <div class="flex justify-between">
-        <div class="pl-20 pt-55 ">
-            <p class="text-lg font-medium font-space text-blue-600">About Us</p>
-            <h1 class="text-6xl font-bold font-space">Start Your Business'<br>Digital Journey</h1>
-            <p class="text-2xl font-reguler font-space text-gray-400 pt-5 max-w-xl">
+</div>
+
+    <div
+        class="flex flex-col-reverse md:flex-row justify-between items-center gap-10 md:gap-20 mt-20 px-6 md:px-20 animate-slideUp">
+        <div class="text-center md:text-left">
+            <p class="text-lg font-medium text-blue-600 mb-4">About Us</p>
+            <h1 class="text-4xl md:text-5xl font-bold">Start Your Business' Digital Journey</h1>
+            <p class="text-lg md:text-xl text-gray-500 pt-5">
                 Help MSMEs build a strong digital presence. From product management to sales strategies, we are here to
                 help your business grow faster.
             </p>
-            <div class="flex items-center gap-5 mt-5 ">
-                <button class="bg-blue-600 p px-4 py-4 text-white font-space rounded-4xl font-medium cursor-pointer">
-                    <a href="#">Get Started Now</a>
+            <a href="#" class="inline-block mt-6 bg-blue-600 px-6 py-3 text-white rounded-xl">Get Started
+                Now</a>
+        </div>
+        <img class="w-full md:w-1/2 lg:w-1/3" src="{{ asset('asset/Bg2.png') }}" alt="">
+    </div>
+
+    <div
+        class="max-w-6xl mx-auto px-6 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center animate-slideUp mt-10">
+        <div class="cursor-pointer">
+            <p class="text-4xl md:text-5xl font-bold text-blue-600">300+</p>
+            <p class="text-sm text-gray-500 mt-1">partner with us</p>
+        </div>
+        <div class="cursor-pointer">
+            <p class="text-4xl md:text-5xl font-bold text-blue-600">$3.2b+</p>
+            <p class="text-sm text-gray-500 mt-1">Cumulative trending</p>
+        </div>
+        <div class="cursor-pointer">
+            <p class="text-4xl md:text-5xl font-bold text-blue-600">860k</p>
+            <p class="text-sm text-gray-500 mt-1">Successful projects</p>
+        </div>
+        <div class="cursor-pointer">
+            <p class="text-4xl md:text-5xl font-bold text-blue-600">1.6%</p>
+            <p class="text-sm text-gray-500 mt-1">Low interest rate</p>
+        </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 md:px-8 py-12 text-center animate-slideUp">
+        <h2 class="text-2xl md:text-4xl font-bold mb-4">Accelerate Your Business Growth</h2>
+        <p class="text-gray-500 mb-6">FramerBite supplies the key components for assembling a top-tier website tailored
+            to your SaaS needs.</p>
+        <div class="flex justify-center">
+            <div class="flex w-full max-w-md">
+                <input placeholder="Enter your email"
+                    class="flex-1 border border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700">
+                    Email me
                 </button>
             </div>
         </div>
-        <img class="mt-20 mr-20" src="{{ asset('asset/Bg2.png') }}" alt="">
     </div>
 
-    <div class="animate-slideUp px-6 md:px-20 mt-30" x-data="{
-        selected: 1,
-        interval: null,
-        reviews: {
-            1: 'Catherine: Initially doubtful, the outcome surpassed all my anticipations. The powerful analytics and reporting features offered crucial perspectives on our business metrics, enabling us to implement informed decisions.',
-            2: 'Ella: The platform has simplified product management and boosted our sales dramatically. Couldn’t be happier with the results!',
-            3: 'Delynn: Great experience! The technology support made our growth faster and more sustainable.'
-        },
-        startAutoSlide() {
-            if (window.innerWidth < 768) {
-                this.interval = setInterval(() => {
-                    this.selected = this.selected < 3 ? this.selected + 1 : 1;
-                    this.scrollToSelected();
-                }, 5000);
-            }
-        },
-        stopAutoSlide() {
-            clearInterval(this.interval);
-            this.interval = null;
-        },
-        scrollToSelected() {
-            this.$refs['card' + this.selected]?.scrollIntoView({
-                behavior: 'smooth',
-                inline: 'center',
-                block: 'nearest'
-            });
-        }
-    }" x-init="startAutoSlide()"
-        @mouseenter="stopAutoSlide()" @mouseleave="startAutoSlide()">
-
-        <div x-ref="slider"
-            class="flex md:hidden gap-4 overflow-x-auto snap-x snap-mandatory pb-4 w-full px-4 pr-8 cursor-grab active:cursor-grabbing"
-            @mousedown="isDown = true; startX = $event.pageX - $refs.slider.offsetLeft; scrollLeft = $refs.slider.scrollLeft"
-            @mouseleave="isDown = false" @mouseup="isDown = false"
-            @mousemove="
-          if(!isDown) return;
-          $event.preventDefault();
-          const x = $event.pageX - $refs.slider.offsetLeft;
-          const walk = (x - startX) * 1.5;
-          $refs.slider.scrollLeft = scrollLeft - walk;
-       "
-            x-data="{ isDown: false, startX: 0, scrollLeft: 0 }">
-
-            <template x-for="i in [1,2,3]" :key="i">
-                <div x-ref="'card' + i" @click="selected = i; scrollToSelected()"
-                    class="flex-shrink-0 w-[85%] sm:w-[300px] snap-center bg-white rounded-xl shadow-md border border-gray-100 p-4 cursor-pointer flex flex-col items-center text-center transition-transform duration-300"
-                    :class="selected === i ? 'scale-100 ring-2 ring-blue-600' : ''">
-                    <img :src="i === 1 ? '{{ asset('asset/Delynn.jpeg') }}' : (i === 2 ? '{{ asset('asset/toy.jpeg') }}' :
-                        '{{ asset('asset/Ella.jpeg') }}')"
-                        class="w-16 h-16 rounded-full mb-3 object-cover"
-                        :class="selected === i ? 'ring-4 ring-blue-600' : ''">
-                    <p class="font-semibold text-lg"
-                        x-text="i === 1 ? 'Catherine Bennett' : (i === 2 ? 'Ella' : 'Delynn')"></p>
-                    <p class="text-sm text-gray-500">Founder, Creative</p>
-                    <p class="text-sm text-gray-600 mt-3" x-text="reviews[i]"></p>
+    <footer class="bg-gray-50 text-gray-700 animate-slideUp">
+        <div class="max-w-6xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+            <div class="flex flex-col space-y-3">
+                <div class="flex items-center gap-2">
+                    <img src="{{ asset('asset/Logo.png') }}" alt="Logo" class="w-8 h-8">
+                    <span class="font-bold text-lg">GrowLocal</span>
                 </div>
-            </template>
-        </div>
-
-        <div class="flex md:hidden justify-center gap-2 mt-10">
-            <template x-for="i in [1,2,3]" :key="'dot-' + i">
-                <button @click="selected = i; scrollToSelected()" class="w-3 h-3 rounded-full transition-all"
-                    :class="selected === i ? 'bg-blue-600 w-5' : 'bg-gray-300'"></button>
-            </template>
-        </div>
-
-        <div class="hidden md:flex flex-col md:flex-row items-start gap-8 md:gap-10 py-6">
-            <div class="flex md:flex-col gap-4 md:gap-5">
-                <div @click="selected = 1"
-                    :class="selected === 1 ? 'bg-gray-200 shadow-lg scale-105' : 'bg-transparent'"
-                    class="flex items-center gap-4 rounded-full px-5 py-3 w-max cursor-pointer transition-all duration-300">
-                    <img src="{{ asset('asset/Delynn.jpeg') }}"
-                        :class="selected === 1 ? 'ring-4 ring-blue-600 animate-fadeIn' : 'animate-fadeIn'"
-                        class="w-14 h-14 rounded-full" alt="Catherine">
-                    <div>
-                        <p class="font-semibold text-lg">Catherine Bennett</p>
-                        <p class="text-gray-500">Founder, Creative</p>
-                    </div>
-                </div>
-
-                <div @click="selected = 2"
-                    :class="selected === 2 ? 'bg-gray-200 shadow-lg scale-105' : 'bg-transparent'"
-                    class="flex items-center gap-4 rounded-full px-5 py-3 w-max cursor-pointer transition-all duration-300">
-                    <img src="{{ asset('asset/toy.jpeg') }}"
-                        :class="selected === 2 ? 'ring-4 ring-blue-600 animate-fadeIn' : 'animate-fadeIn'"
-                        class="w-14 h-14 rounded-full" alt="Ella">
-                    <div>
-                        <p class="font-semibold text-lg">Ella</p>
-                        <p class="text-gray-500">Founder, Creative</p>
-                    </div>
-                </div>
-
-                <div @click="selected = 3"
-                    :class="selected === 3 ? 'bg-gray-200 shadow-lg scale-105' : 'bg-transparent'"
-                    class="flex items-center gap-4 rounded-full px-5 py-3 w-max cursor-pointer transition-all duration-300">
-                    <img src="{{ asset('asset/Ella.jpeg') }}"
-                        :class="selected === 3 ? 'ring-4 ring-blue-600 animate-fadeIn' : 'animate-fadeIn'"
-                        class="w-14 h-14 rounded-full" alt="Delynn">
-                    <div>
-                        <p class="font-semibold text-lg">Delynn</p>
-                        <p class="text-gray-500">Founder, Creative</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="md:pl-6 lg:pl-10 md:w-[600px]">
-                <p x-text="reviews[selected]"
-                    :class="{
-                        'animate-fadeIn text-blue-600': selected === 1,
-                        'animate-fadeIn text-blue-600': selected === 2,
-                        'animate-fadeIn text-blue-600': selected === 3
-                    }"
-                    class="text-xl md:text-2xl text-gray-700 border border-gray-200 rounded-lg p-5 bg-white/70">
+                <p class="text-sm text-gray-500">
+                    XB memberi blok yang dibutuhkan untuk membuat website profesional SaaS.
                 </p>
             </div>
-        </div>
-    </div>
 
-
-    <div class="text-center">
-    <h1 class="font-bold text-blue-500 text-7xl">300+</h1>
-    <p class="text-sm font-medium text-gray-500">partner with us</p>
-    </div>
-    <div class="max-w-3xl mx-auto px-4 py-12 text-center ">
-        <h2 class="text-5xl font-bold font-space text-center">Accelerate Your Business Growth</h2>
-        <p class="text-xl font-medium font-space text-center text-gray-500 mt-10">FramerBite supplies the key
-            components for assembling a <br>top-tier website tailored to your SaaS needs.</p>
-        <div class="mt-12">
-            <input placeholder="email"
-                class="border border-gray-500 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus ring-blue-500">
-            <button class="bg-blue-600 text-white px-2 py-2 rounded-md hover:bg-blue-700">Email Me</button>
-        </div>
-    </div>
-
-    <footer class="bg-gray-100 text-gray-700 py-10 mt-16 px-6">
-        <div class="max-w-6xl mx-auto grid grid-cols-3 place-items-center">
-            <div class="w-full">
-                <h2 class="text-2xl font-bold mb-4">Nexora.</h2>
-                <p class="text-sm font-medium mb-4">Ready to explore the world without the hassle?
-                    With Nexora, find your dream destination, manage your trip with ease, and experience the real
-                    locals.
-                    Explore now. Adventure awaits you.
-
-                    Nexora Discover new places, create new stories.</p>
-            </div>
-            <div class="flex gap-6">
-                <div class=" w-full">
-                    <h3 class="font-semibold mb-3">Navigation</h3>
-                    <ul class="">
-                        <li><a href="#" class="hover:text-blue-500">Home</a></li>
-                        <li><a href="#" class="hover:text-blue-500">About Me</a></li>
-                        <li><a href="#" class="hover:text-blue-500">Tour</a></li>
-                        <li><a href="#" class="hover:text-blue-500">Package</a></li>
-                        <li><a href="#" class="hover:text-blue-500">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class=" w-full">
-                    <h3 class="font-semibold mb-3">Follow Us</h3>
-                    <ul class="">
-                        <li><a href="#" class="hover:text-blue-500">Instagram</a></li>
-                        <li><a href="#" class="hover:text-blue-500">Twitter</a></li>
-                        <li><a href="#" class="hover:text-blue-500">YouTube</a></li>
-                        <li><a href="#" class="hover:text-blue-500">FaceBook</a></li>
-                    </ul>
-                </div>
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Solutions</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Freelancer</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Data Analytics</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Small Business</a></li>
+                </ul>
             </div>
 
-            <div class=" w-full">
-                <h3 class="font-semibold mb-3">Contact Info</h3>
-                <ul>
-                    <li>Email : <span>Nexora.</span>@gmail.com</li>
-                    <li>Phone : +6281589632155</li>
-                    <li>Address : Senayan, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta</li>
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Company</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">About</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Career</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Resources</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Customers</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Strategic Finance</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Ebooks & Guides</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Features</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Freelancer</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Data Analytics</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Small Business</a></li>
                 </ul>
             </div>
         </div>
+        <div class="border-t border-gray-200 py-4 text-center text-xs text-gray-500">
+            © 2023 All Rights Reserved by GrowLocal
+        </div>
     </footer>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const els = document.querySelectorAll('.animate-slideUp, .scroll-slideUp');
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) e.target.classList.add('show');
+                });
+            }, {
+                threshold: 0.18
+            });
+            els.forEach(el => io.observe(el));
+        });
+    </script>
 </body>
 
 </html>
