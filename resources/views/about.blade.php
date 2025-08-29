@@ -301,5 +301,120 @@
         </div>
     </div>
     
+        <div class="px-6 md:px-20 py-20 text-center bg-gray-50 animate-slideUp">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">It's Time for MSMEs to Go Digital</h2>
+        <p class="text-gray-500 mb-10 max-w-2xl mx-auto">
+            From local products to wider markets with technology, we help MSMEs manage their online stores,
+            simplify sales, and reach more customers without hassle.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow text-left hover:scale-105 transition cursor-pointer">
+                <div class="flex text-yellow-400 mb-3">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-700">The price is affordable and it has complete features. Now I can manage
+                    inventory and sales easily.</p>
+                <p class="mt-3 font-semibold">Robert Jhon</p>
+                <p class="text-sm text-gray-500">Local Fashion Entrepreneur</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow text-left  hover:scale-105 transition cursor-pointer">
+                <div class="flex text-yellow-400 mb-3">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-700">I was hesitant at first, but setting up an online store here is very easy.
+                    Sales increased quickly.</p>
+                <p class="mt-3 font-semibold">Selvia Roen</p>
+                <p class="text-sm text-gray-500">Home-Based Cake Shop Owner</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow text-left  hover:scale-105 transition cursor-pointer">
+                <div class="flex text-yellow-400 mb-3">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-gray-700">Perfect for MSMEs. From uploading products, managing orders, to sales reports
+                    — everything is easier.</p>
+                <p class="mt-3 font-semibold">Corvin Hale</p>
+                <p class="text-sm text-gray-500">Modern Coffee Shop</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-6 md:px-20 py-20 text-center animate-slideUp">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Accelerate Your Business Growth</h2>
+        <p class="text-gray-500 mb-6">FramerBite supplies the key components for assembling a top-tier website tailored
+            to your SaaS needs.</p>
+        <div class="flex justify-center">
+            <input type="email" placeholder="Enter your email"
+                class="border border-gray-300 rounded-l-lg px-4 py-3 w-64 focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <button class="bg-blue-600 text-white px-6 py-3 rounded-r-lg hover:bg-blue-700">Email me</button>
+        </div>
+    </div>
+
+    <footer class="bg-gray-50 text-gray-700 animate-slideUp">
+        <div class="max-w-6xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+            <div class="flex flex-col space-y-3">
+                <div class="flex items-center gap-2">
+                    <img src="{{ asset('asset/Logo.png') }}" alt="Logo" class="w-8 h-8">
+                    <span class="font-bold text-lg">GrowLocal</span>
+                </div>
+                <p class="text-sm text-gray-500">
+                    XB memberi blok yang dibutuhkan untuk membuat website profesional SaaS.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Solutions</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Freelancer</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Data Analytics</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Small Business</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Company</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">About</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Career</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Resources</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Customers</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Strategic Finance</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Ebooks & Guides</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Features</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Freelancer</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Data Analytics</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Small Business</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-200 py-4 text-center text-xs text-gray-500">
+            © 2023 All Rights Reserved by GrowLocal
+        </div>
+    </footer>
 </body>
 </html>
