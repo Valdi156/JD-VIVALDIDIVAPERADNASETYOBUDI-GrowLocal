@@ -13,8 +13,8 @@
 </head>
 
 <body class="">
-    <nav class="flex items-center justify-between px-20 h-20">
-        <div class="text-2xl font-bold text-black flex items-center gap-4 font-serif">
+    <nav class="flex items-center justify-between px-20 h-20 font-s">
+        <div class="text-2xl font-bold text-black flex items-center gap-4">
             <img src="{{ asset('asset/Logo.png') }}" alt="Logo" class="h-10">
             GrowLocal
         </div>
