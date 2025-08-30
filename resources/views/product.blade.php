@@ -11,8 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body class="font-space">
-
-      <nav x-data="{ open: false, dropdown: false }"
+    <nav x-data="{ open: false, dropdown: false }"
         class="flex items-center justify-between px-6 md:px-20 h-20 sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-gray-100">
 
         <div class="text-xl md:text-2xl font-bold text-black flex items-center gap-3">
@@ -80,128 +79,86 @@
             </div>
         </div>
     </nav>
+    <!-- CONTENT -->
+    <div class="max-w-7xl mx-auto px-6 py-8 animate-slideUp"
+         x-data="productFilter({ products: {{ Js::from($products) }} })">
 
-
-    <div class="max-w-7xl mx-auto px-6 py-8 animate-slideUp" 
-         x-data="{ filterOpen: false, activeTab: 'marketplace' }">
-
+        <!-- Search + Filter -->
         <div class="flex items-center gap-3 bg-gray-100 rounded-xl px-4 py-3 relative">
             <i class="bx bx-search text-gray-400 text-xl"></i>
             <input type="text" placeholder="Search product"
-                   class="bg-transparent flex-1 outline-none text-sm font-space md:text-base">
+                   class="bg-transparent flex-1 outline-none text-sm font-space md:text-base"
+                   x-model="search" @input="doSearch()">
 
             <button @click="filterOpen = !filterOpen" class="relative">
                 <i class="bx bx-filter text-gray-500 text-xl cursor-pointer"></i>
             </button>
 
+            <!-- Filter Panel -->
             <div x-show="filterOpen" @click.outside="filterOpen = false"
                  class="absolute top-12 right-0 bg-white shadow-lg rounded-lg w-48 p-4 text-sm z-50 font-space">
                 <p class="font-semibold mb-2">Filter By</p>
                 <label class="flex items-center gap-2 mb-2">
-                    <input type="checkbox" class="form-checkbox text-blue-600"> Nike
+                    <input type="checkbox" value="Nike" x-model="selectedBrands" class="form-checkbox text-blue-600"> Nike
                 </label>
                 <label class="flex items-center gap-2 mb-2">
-                    <input type="checkbox" class="form-checkbox text-blue-600"> Adidas
+                    <input type="checkbox" value="Adidas" x-model="selectedBrands" class="form-checkbox text-blue-600"> Adidas
                 </label>
                 <label class="flex items-center gap-2 mb-2">
-                    <input type="checkbox" class="form-checkbox text-blue-600"> Puma
+                    <input type="checkbox" value="Puma" x-model="selectedBrands" class="form-checkbox text-blue-600"> Puma
                 </label>
-                <button class="mt-2 w-full bg-blue-600 text-white py-1 rounded-lg text-xs hover:bg-blue-700">
-                    Apply Filter
-                </button>
             </div>
         </div>
 
-        <div class="flex flex-wrap gap-3 mt-6 text-sm font-medium font-space">
-            <button @click="activeTab = 'marketplace'"
-                    :class="activeTab === 'marketplace' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-blue-100 text-gray-600'"
-                    class="px-4 py-2 rounded-full transition">Marketplace</button>
+        <!-- Produk List -->
+        <div class="mt-8">
+            <!-- Loading Skeleton -->
+            <template x-if="loading">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <template x-for="i in 6" :key="i">
+                        <div class="border rounded-xl p-4 shadow-sm bg-white animate-pulse">
+                            <div class="w-full h-32 bg-gray-200 rounded"></div>
+                            <div class="mt-3 h-4 bg-gray-200 rounded"></div>
+                            <div class="mt-2 h-3 bg-gray-200 rounded w-2/3"></div>
+                            <div class="mt-3 h-5 bg-gray-300 rounded w-1/2"></div>
+                        </div>
+                    </template>
+                </div>
+            </template>
 
-            <button @click="activeTab = 'explore'"
-                    :class="activeTab === 'explore' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-blue-100 text-gray-600'"
-                    class="px-4 py-2 rounded-full transition">Explore Product</button>
+            <!-- Produk Ada -->
+            <template x-if="!loading && filteredProducts.length > 0">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <template x-for="product in filteredProducts" :key="product.id">
+                        <div class="border rounded-xl p-4 shadow-sm hover:shadow-md transition transform hover:-translate-y-2 hover:scale-105 duration-300 bg-white">
+                            <img :src="'/storage/' + product.gambar"
+                                 :alt="product.judul"
+                                 class="w-full h-32 object-contain">
 
-            <button @click="activeTab = 'categories'"
-                    :class="activeTab === 'categories' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-blue-100 text-gray-600'"
-                    class="px-4 py-2 rounded-full transition">Product Categories</button>
+                            <h3 class="text-sm font-medium mt-3" x-text="product.judul"></h3>
+                            <p class="text-gray-400 text-xs">
+                                <span class="inline-block w-4 h-4 rounded-full border"
+                                      :style="'background:' + product.warna"></span>
+                            </p>
+                            <p class="mt-2 text-blue-600 font-bold"
+                               x-text="'Rp' + new Intl.NumberFormat('id-ID').format(product.harga)"></p>
 
-            <button @click="activeTab = 'promo'"
-                    :class="activeTab === 'promo' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-blue-100 text-gray-600'"
-                    class="px-4 py-2 rounded-full transition">Promotions & Discounts</button>
+                            <button class="w-full mt-3 py-2 text-sm border border-blue-600 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-white transition">
+                                Buy Now
+                            </button>
+                        </div>
+                    </template>
+                </div>
+            </template>
 
-            <button @click="activeTab = 'featured'"
-                    :class="activeTab === 'featured' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-blue-100 text-gray-600'"
-                    class="px-4 py-2 rounded-full transition">Featured Products</button>
+            <!-- Produk Kosong -->
+            <template x-if="!loading && filteredProducts.length === 0">
+                <p class="text-center text-gray-500 mt-6">Barang tidak ada</p>
+            </template>
         </div>
-
-        <div class="py-10" x-show="activeTab === 'marketplace'">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg md:text-xl font-bold">Marketplace Product</h2>
-                <a href="#" class="text-sm text-blue-600 hover:underline">View All</a>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                @foreach($products as $product)
-                    <div class="border rounded-xl p-4 shadow-sm hover:shadow-md transition transform hover:-translate-y-2 hover:scale-105 duration-300 bg-white">
-                        <img src="{{ asset('storage/' . $product->gambar) }}" 
-                             alt="{{ $product->judul }}" 
-                             class="w-full h-32 object-contain">
-
-                        <h3 class="text-sm font-medium mt-3">{{ $product->judul }}</h3>
-                        <p class="text-gray-400 text-xs">
-                            <span class="inline-block w-4 h-4 rounded-full border" style="background: {{ $product->warna }}"></span>
-                        </p>
-                        <p class="mt-2 text-blue-600 font-bold">Rp{{ number_format($product->harga, 0, ',', '.') }}</p>
-
-                        <button class="w-full mt-3 py-2 text-sm border border-blue-600 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-white transition">
-                            Buy Now
-                        </button>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="py-10" x-show="activeTab === 'explore'">
-            <h2 class="text-lg md:text-xl font-bold mb-6">Best Store This Month</h2>
-        </div>
-
-        <div class="py-10" x-show="activeTab === 'categories'">
-            <h2 class="text-lg md:text-xl font-bold mb-6">Product Categories</h2>
-        </div>
-
-        <div class="py-10" x-show="activeTab === 'promo'">
-            <h2 class="text-lg md:text-xl font-bold mb-6">Promotions & Discounts</h2>
-        </div>
-
-        <div class="py-10" x-show="activeTab === 'featured'">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg md:text-xl font-bold">Featured Products</h2>
-                <a href="#" class="text-sm text-blue-600 hover:underline">View All</a>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                @foreach($products as $product)
-                    <div class="border rounded-xl p-4 shadow-sm hover:shadow-md transition transform hover:-translate-y-2 hover:scale-105 duration-300 bg-white">
-                        <img src="{{ asset('storage/' . $product->gambar) }}" 
-                             alt="{{ $product->judul }}" 
-                             class="w-full h-32 object-contain">
-
-                        <h3 class="text-sm font-medium mt-3">{{ $product->judul }}</h3>
-                        <p class="text-gray-400 text-xs">
-                            <span class="inline-block w-4 h-4 rounded-full border" style="background: {{ $product->warna }}"></span>
-                        </p>
-                        <p class="mt-2 text-blue-600 font-bold">Rp{{ number_format($product->harga, 0, ',', '.') }}</p>
-
-                        <button class="w-full mt-3 py-2 text-sm border border-blue-600 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-white transition">
-                            Buy Now
-                        </button>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
     </div>
 
+    <!-- FOOTER -->
     <footer class="bg-gray-50 text-gray-700 animate-slideUp font-space">
         <div class="max-w-6xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
             <div class="flex flex-col space-y-3">
@@ -255,5 +212,45 @@
         </div>
     </footer>
 
+
+    <!-- AlpineJS Component -->
+    <script>
+    function productFilter({ products }) {
+        return {
+            products,
+            search: '',
+            selectedBrands: [],
+            filterOpen: false,
+            loading: false,
+
+            get filteredProducts() {
+                let result = this.products;
+
+                // filter by search
+                if (this.search) {
+                    result = result.filter(p =>
+                        p.judul.toLowerCase().includes(this.search.toLowerCase())
+                    );
+                }
+
+                // filter by brand
+                if (this.selectedBrands.length > 0) {
+                    result = result.filter(p =>
+                        this.selectedBrands.includes(p.brand)
+                    );
+                }
+
+                return result;
+            },
+
+            doSearch() {
+                this.loading = true;
+                setTimeout(() => {
+                    this.loading = false;
+                }, 700); // simulasi loading
+            }
+        }
+    }
+    </script>
 </body>
 </html>

@@ -174,58 +174,66 @@
         </div>
     </div>
 
-<div class="grid md:grid-cols-2 gap-12 px-6 md:px-16 py-16 items-center">
-    <img 
-        src="{{ asset('asset/kerja.png') }}" 
-        alt="About Us"
-        class=" rounded-2xl shadow-lg object-cover"
-    >
-    <div>
-        <p class="text-blue-600 font-semibold mb-2 font-space">ABOUT US</p>
-        <h2 class="text-3xl font-bold leading-snug font-space">Let's Connect with GrowLocal</h2>
-        <p class="text-gray-500 mt-4 leading-relaxed">
-            Help MSMEs build a strong digital presence. From product management to sales
-            strategies, we are here to help your business grow faster.
+    <div class="grid md:grid-cols-2 gap-12 px-6 md:px-16 py-16 items-center">
+        <img src="{{ asset('asset/kerja.png') }}" alt="About Us" class=" rounded-2xl shadow-lg object-cover">
+        <div>
+            <p class="text-blue-600 font-semibold mb-2 font-space">ABOUT US</p>
+            <h2 class="text-3xl font-bold leading-snug font-space">Let's Connect with GrowLocal</h2>
+            <p class="text-gray-500 mt-4 leading-relaxed">
+                Help MSMEs build a strong digital presence. From product management to sales
+                strategies, we are here to help your business grow faster.
+            </p>
+            <a href="#"
+                class="mt-6 inline-block px-6 py-3 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">
+                More About Us
+            </a>
+        </div>
+    </div>
+
+<div class="px-6 md:px-16 py-16 grid md:grid-cols-3 gap-10 font-space">
+    <!-- FORM -->
+    <form action="https://formspree.io/f/xvgbaplp" method="POST"
+        class="md:col-span-2 space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+            <input type="text" name="name" placeholder="Name :" required
+                class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none">
+            <input type="email" name="email" placeholder="Email :" required
+                class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none">
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+            <input type="text" name="subject" placeholder="Subject :"
+                class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none">
+            <input type="text" name="phone" placeholder="No Hp :"
+                class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none">
+        </div>
+        <textarea rows="5" name="message" placeholder="Write your problem here :" required
+            class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
+        <button type="submit"
+            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+            Send
+        </button>
+    </form>
+
+    <!-- CONTACT INFO -->
+    <div class="space-y-6">
+        <h3 class="text-blue-600 text-lg font-semibold font-space">Contact Us</h3>
+        <p class="flex items-center gap-2 mt-2 text-xl font-medium font-space">
+            <i class='bx bx-envelope text-2xl'></i> 
+            <a href="mailto:hello@growlocal.id">hello@growlocal.id</a>
         </p>
-        <a href="#"
-           class="mt-6 inline-block px-6 py-3 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">
-            More About Us
-        </a>
+        <p class="flex items-center gap-2 mt-2 text-xl font-medium font-space">
+            <i class='bx bx-phone text-2xl'></i> 
+            +62 812-3456-7890
+        </p>
+        <p class="flex items-start gap-2 mt-2 text-xl font-medium font-space">
+            <i class='bx bx-map text-2xl'></i>
+            <a href="#">GrowLocal HQ <br> Jl. Melati Raya No.123, Jakarta Selatan, Indonesia </a>
+        </p>
     </div>
 </div>
 
-    <div class="px-6 md:px-16 py-16 grid md:grid-cols-3 gap-10 font-space">
-        <div class="md:col-span-2 space-y-4">
-            <div class="grid md:grid-cols-2 gap-4">
-                <input type="text" placeholder="Name :"
-                    class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none">
-                <input type="email" placeholder="Email :"
-                    class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none">
-            </div>
-            <div class="grid md:grid-cols-2 gap-4">
-                <input type="text" placeholder="Tell us your problem :"
-                    class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none">
-                <input type="text" placeholder="No Hp :"
-                    class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none">
-            </div>
-            <textarea rows="5" placeholder="Write your problem here :"
-                class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
-            <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Send</button>
-        </div>
 
-        <div class="space-y-6">
-            <div>
-                <h3 class="text-blue-600 text-lg font-semibold font-space ">Contact Us</h3>
-                <p class="flex items-center gap-2 mt-2 text-xl font-medium font-space"><i class='bx bx-envelope text-2xl'></i> <a href="#">hello@growlocal.id</a></p>
-                <p class="flex items-center gap-2 mt-2 text-xl font-medium font-space"><i class='bx bx-phone text-2xl'></i> +62 812-3456-7890</p>
-                <p class="flex items-start gap-2 mt-2 text-xl font-medium font-space"><i class='bx bx-map text-2xl'></i>
-                   <a href="#">GrowLocal HQ <br> Jl. Melati Raya No.123, Jakarta Selatan, Indonesia </a>
-                </p>
-            </div>
-        </div>
-    </div>
-
-        <footer class="bg-gray-50 text-gray-700 animate-slideUp font-space">
+    <footer class="bg-gray-50 text-gray-700 animate-slideUp font-space">
         <div class="max-w-6xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
             <div class="flex flex-col space-y-3">
                 <div class="flex items-center gap-2">
@@ -279,4 +287,5 @@
     </footer>
 
 </body>
+
 </html>
