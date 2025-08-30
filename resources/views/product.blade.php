@@ -225,15 +225,11 @@
 
             get filteredProducts() {
                 let result = this.products;
-
-                // filter by search
                 if (this.search) {
                     result = result.filter(p =>
                         p.judul.toLowerCase().includes(this.search.toLowerCase())
                     );
                 }
-
-                // filter by brand
                 if (this.selectedBrands.length > 0) {
                     result = result.filter(p =>
                         this.selectedBrands.includes(p.brand)
@@ -247,7 +243,7 @@
                 this.loading = true;
                 setTimeout(() => {
                     this.loading = false;
-                }, 700); // simulasi loading
+                }, 700); 
             }
         }
     }
