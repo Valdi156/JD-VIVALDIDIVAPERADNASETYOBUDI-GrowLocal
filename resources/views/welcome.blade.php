@@ -91,19 +91,19 @@
                 grow faster.
             </p>
             <div class="flex flex-col md:flex-row items-center gap-5 mt-6">
-                <button class="bg-blue-600 px-6 py-3 text-white rounded-3xl">
+                <button class="bg-blue-600 px-6 py-3 text-white rounded-3xl hover:bg-blue-700 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/50 transition-all duration-300">
                     <a href="#">Get Started Now</a>
                 </button>
                 <div class="flex items-center gap-3">
                     <div class="flex">
                         <img src="https://randomuser.me/api/portraits/men/53.jpg"
-                            class="w-10 h-10 rounded-full border-2 border-white" alt="client">
+                            class="w-10 h-10 rounded-full border-2 border-white cursor-pointer" alt="client">
                         <img src="https://randomuser.me/api/portraits/women/44.jpg"
-                            class="w-10 h-10 rounded-full border-2 border-white -ml-3" alt="client">
+                            class="w-10 h-10 rounded-full border-2 border-white -ml-3 cursor-pointer" alt="client">
                         <img src="https://randomuser.me/api/portraits/men/12.jpg"
-                            class="w-10 h-10 rounded-full border-2 border-white -ml-3" alt="client">
+                            class="w-10 h-10 rounded-full border-2 border-white -ml-3 cursor-pointer" alt="client">
                         <div
-                            class="w-10 h-10 -ml-3 flex items-center justify-center rounded-full border-2 border-white bg-gray-200 text-gray-700">
+                            class="w-10 h-10 -ml-3 flex items-center justify-center rounded-full border-2 border-white bg-gray-200 text-gray-700 cursor-pointer">
                             <i class="fa-solid fa-plus"></i>
                         </div>
                     </div>
@@ -299,7 +299,7 @@
         </div>
     </div>
 
-    <footer class="bg-gray-50 text-gray-700 animate-slideUp">
+    <footer class="bg-gray-50 text-gray-700 animate-slideUp font-space">
         <div class="max-w-6xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
             <div class="flex flex-col space-y-3">
                 <div class="flex items-center gap-2">

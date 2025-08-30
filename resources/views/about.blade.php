@@ -365,7 +365,7 @@
         </div>
     </div>
 
-    <footer class="bg-gray-50 text-gray-700 animate-slideUp">
+    <footer class="bg-gray-50 text-gray-700 animate-slideUp font-space">
         <div class="max-w-6xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
             <div class="flex flex-col space-y-3">
                 <div class="flex items-center gap-2">

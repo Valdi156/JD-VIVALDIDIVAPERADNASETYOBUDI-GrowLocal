@@ -193,13 +193,49 @@
         </button>
       </div>
       <div class="border rounded-xl p-6 shadow-sm hover:shadow-md transition flex flex-col md:flex-row gap-4 items-center">
+        <img src="{{ asset('asset/NB.png') }}" alt="Puma" class="w-20 h-20 object-contain">
+        <div class="flex-1">
+          <div class="flex items-center gap-2">
+            <h3 class="font-bold">new balance</h3>
+            <i class='bx bxs-badge-check text-blue-600'></i>
+          </div>
+          <p class="text-sm text-gray-400">@new_balance</p>
+          <div class="flex flex-wrap gap-4 mt-2 text-sm text-gray-600">
+            <span>1.362 Total shoes</span>
+            <span>5.7M Followers</span>
+            <span>76 Exclusive Shoe</span>
+          </div>
+        </div>
+        <button class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-blue-600 hover:text-blue-600">
+          + Follow
+        </button>
+      </div>
+      <div class="border rounded-xl p-6 shadow-sm hover:shadow-md transition flex flex-col md:flex-row gap-4 items-center">
+        <img src="{{ asset('asset/nike.png') }}" alt="Puma" class="w-20 h-20 object-contain">
+        <div class="flex-1">
+          <div class="flex items-center gap-2">
+            <h3 class="font-bold">new balance</h3>
+            <i class='bx bxs-badge-check text-blue-600'></i>
+          </div>
+          <p class="text-sm text-gray-400">@nike</p>
+          <div class="flex flex-wrap gap-4 mt-2 text-sm text-gray-600">
+            <span>1.362 Total shoes</span>
+            <span>5.7M Followers</span>
+            <span>76 Exclusive Shoe</span>
+          </div>
+        </div>
+        <button class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:border-blue-600 hover:text-blue-600">
+          + Follow
+        </button>
+      </div>
+      <div class="border rounded-xl p-6 shadow-sm hover:shadow-md transition flex flex-col md:flex-row gap-4 items-center">
         <img src="{{ asset('asset/puma.png') }}" alt="Puma" class="w-20 h-20 object-contain">
         <div class="flex-1">
           <div class="flex items-center gap-2">
-            <h3 class="font-bold">Puma Store</h3>
+            <h3 class="font-bold">new balance</h3>
             <i class='bx bxs-badge-check text-blue-600'></i>
           </div>
-          <p class="text-sm text-gray-400">@pumaid</p>
+          <p class="text-sm text-gray-400">@puma</p>
           <div class="flex flex-wrap gap-4 mt-2 text-sm text-gray-600">
             <span>1.362 Total shoes</span>
             <span>5.7M Followers</span>
@@ -232,6 +268,22 @@
         <i class="bx bx-female text-3xl text-pink-600"></i>
         <p class="mt-2 text-sm font-medium">Women</p>
       </div>
+      <div class="border rounded-xl p-6 flex flex-col items-center shadow-sm hover:shadow-md">
+      <i class="fa-solid fa-person text-3xl text-blue-600"></i>        
+      <p class="mt-2 text-sm font-medium">Men</p>
+      </div>
+      <div class="border rounded-xl p-6 flex flex-col items-center shadow-sm hover:shadow-md">
+<i class="fa-solid fa-child text-3xl text-red-600"></i>        
+<p class="mt-2 text-sm font-medium">little boy</p>
+      </div>
+      <div class="border rounded-xl p-6 flex flex-col items-center shadow-sm hover:shadow-md">
+<i class="fa-solid fa-child-dress text-3xl text-purple-600"></i>        
+<p class="mt-2 text-sm font-medium">little girl</p>
+      </div>
+      <div class="border rounded-xl p-6 flex flex-col items-center shadow-sm hover:shadow-md">
+<i class="fa-solid fa-rotate-right text-3xl text-green-600"></i>        
+<p class="mt-2 text-sm font-medium">Daily</p>
+      </div>
     </div>
   </div>
 
@@ -255,26 +307,96 @@
     </div>
   </div>
 
-  <!-- TAB: FEATURED PRODUCTS -->
-  <div class="py-10" x-show="activeTab === 'featured'">
-    <h2 class="text-lg md:text-xl font-bold mb-6">Featured Products</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="border rounded-xl p-4 shadow-sm hover:shadow-md transition">
-        <img src="{{ asset('asset/shoe2.png') }}" alt="Featured Shoe" class="w-full h-32 object-contain">
-        <h3 class="text-sm font-medium mt-3">Nike Air Zoom</h3>
-        <p class="text-gray-400 text-xs">5 Colours</p>
-        <p class="mt-2 text-blue-600 font-bold">Rp 450.000</p>
-      </div>
-      <div class="border rounded-xl p-4 shadow-sm hover:shadow-md transition">
-        <img src="{{ asset('asset/shoe3.png') }}" alt="Featured Shoe" class="w-full h-32 object-contain">
-        <h3 class="text-sm font-medium mt-3">Adidas Ultraboost</h3>
-        <p class="text-gray-400 text-xs">6 Colours</p>
-        <p class="mt-2 text-blue-600 font-bold">Rp 550.000</p>
-      </div>
-    </div>
+<div class="py-10" x-data="{ favorites: {} }" x-show="activeTab === 'featured'">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-lg md:text-xl font-bold">Exclusive Product From Nike</h2>
+    <a href="#" class="text-sm text-blue-600 hover:underline">View All Shoes</a>
   </div>
 
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+
+    <template x-for="product in [
+      { id: 1, name: 'Nike Red Shoe 77', colors: '7 Colours', price: 'Rp 220.000', img: '{{ asset('asset/sepatu.png') }}' },
+      { id: 2, name: 'Nike Blue Runner', colors: '5 Colours', price: 'Rp 250.000', img: '{{ asset('asset/sepatu.png') }}' },
+      { id: 3, name: 'Nike Black Air', colors: '3 Colours', price: 'Rp 300.000', img: '{{ asset('asset/sepatu.png') }}' },
+      { id: 4, name: 'Nike White Classic', colors: '4 Colours', price: 'Rp 280.000', img: '{{ asset('asset/sepatu.png') }}' },
+      { id: 5, name: 'Nike Sport Pro', colors: '6 Colours', price: 'Rp 320.000', img: '{{ asset('asset/sepatu.png') }}' },
+      { id: 6, name: 'Nike Street Style', colors: '2 Colours', price: 'Rp 350.000', img: '{{ asset('asset/sepatu.png') }}' }
+    ]" :key="product.id">
+      
+      <div 
+        class="border rounded-xl p-4 shadow-sm hover:shadow-md transition transform hover:-translate-y-2 hover:scale-105 duration-300 relative bg-white">
+
+        <img :src="product.img" alt="Nike Shoe" class="w-full h-32 object-contain">
+
+        <h3 class="text-sm font-medium mt-3" x-text="product.name"></h3>
+        <p class="text-gray-400 text-xs" x-text="product.colors"></p>
+        <p class="mt-2 text-blue-600 font-bold" x-text="product.price"></p>
+
+        <button 
+          class="w-full mt-3 py-2 text-sm border border-blue-600 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300">
+          Buy Now
+        </button>
+
+
+      </div>
+
+    </template>
+  </div>
 </div>
+      <footer class="bg-gray-50 text-gray-700 animate-slideUp font-space">
+        <div class="max-w-6xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+            <div class="flex flex-col space-y-3">
+                <div class="flex items-center gap-2">
+                    <img src="{{ asset('asset/Logo.png') }}" alt="Logo" class="w-8 h-8">
+                    <span class="font-bold text-lg">GrowLocal</span>
+                </div>
+                <p class="text-sm text-gray-500">
+                    XB memberi blok yang dibutuhkan untuk membuat website profesional SaaS.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Solutions</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Freelancer</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Data Analytics</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Small Business</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Company</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">About</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Career</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Resources</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Customers</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Strategic Finance</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Ebooks & Guides</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-3 text-gray-900">Features</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Freelancer</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Data Analytics</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Small Business</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-200 py-4 text-center text-xs text-gray-500">
+            © 2023 All Rights Reserved by GrowLocal
+        </div>
+    </footer>
 
 </body>
 </html>
