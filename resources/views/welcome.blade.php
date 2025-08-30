@@ -137,6 +137,73 @@
         </div>
     </div>
 
+        <div class="animate-slideUp px-6 md:px-20 mt-20 mb-10">
+        <h1 class="text-2xl md:text-4xl font-bold text-center">
+            We're here to assist you in creating, <br class="hidden md:block">managing
+        </h1>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-10">
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 cursor-pointer">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white">
+                        <i class='bx bx-filter-alt text-2xl'></i>
+                    </div>
+                    <h3 class="font-bold text-xl md:text-2xl text-gray-800">For MSMEs</h3>
+                </div>
+                <p class="text-gray-500 text-base md:text-lg">
+                    We are here specifically for MSMEs helping them manage their products, increase sales, and reach
+                    more
+                    customers without hassle.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 cursor-pointer">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white">
+                        <i class='bx bx-copy text-2xl'></i>
+                    </div>
+                    <h3 class="font-bold text-xl md:text-2xl text-gray-800">Retirement Plan</h3>
+                </div>
+                <p class="text-gray-500 text-base md:text-lg">
+                    Plan your business growth with the right sales strategy. With the support of technology, MSMEs can
+                    grow
+                    faster, more stable, and be ready to compete in a wider market.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 mt-5 cursor-pointer">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white">
+                    <i class='bx bx-copy text-2xl'></i>
+                </div>
+                <h3 class="font-bold text-xl md:text-2xl text-gray-800">Retirement Plan</h3>
+            </div>
+            <p class="text-gray-500 text-base md:text-lg leading-relaxed">
+                Plan your business growth with the right sales strategy. With the support of technology, MSMEs can grow
+                faster, more stable, and be ready to compete in a wider market. Our platform helps you manage products,
+                reach more customers, and optimize every step of your sales process — so your business doesn t just
+                survive,
+                but thrives.
+            </p>
+        </div>
+    </div>
+
+    <div class="flex justify-center animate-slideUp px-6 md:px-20 mt-16">
+        <div class="text-center max-w-3xl">
+            <p class="text-base md:text-lg font-medium text-blue-600">About Us</p>
+            <h1 class="text-3xl md:text-5xl font-bold mt-10">Start Your Business'<br>Digital Journey</h1>
+            <p class="text-lg md:text-2xl text-gray-400 pt-10">
+                Help MSMEs build a strong digital presence. From product management to sales strategies, we are here to help your business grow faster.
+            </p>
+            <div class="mt-6">
+                <button class="bg-blue-600 px-6 py-3 text-white rounded-3xl">
+                    <a href="#">Get Started Now</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
 <div class="animate-slideUp px-6 md:px-20 mt-30" 
      x-data="{
         selected: 1,

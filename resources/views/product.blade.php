@@ -79,11 +79,11 @@
             </div>
         </div>
     </nav>
-    <!-- CONTENT -->
+
+    <main class="flex-1 min-h-[calc(100vh-20rem)]">
     <div class="max-w-7xl mx-auto px-6 py-8 animate-slideUp"
          x-data="productFilter({ products: {{ Js::from($products) }} })">
 
-        <!-- Search + Filter -->
         <div class="flex items-center gap-3 bg-gray-100 rounded-xl px-4 py-3 relative">
             <i class="bx bx-search text-gray-400 text-xl"></i>
             <input type="text" placeholder="Search product"
@@ -94,7 +94,6 @@
                 <i class="bx bx-filter text-gray-500 text-xl cursor-pointer"></i>
             </button>
 
-            <!-- Filter Panel -->
             <div x-show="filterOpen" @click.outside="filterOpen = false"
                  class="absolute top-12 right-0 bg-white shadow-lg rounded-lg w-48 p-4 text-sm z-50 font-space">
                 <p class="font-semibold mb-2">Filter By</p>
@@ -110,9 +109,7 @@
             </div>
         </div>
 
-        <!-- Produk List -->
         <div class="mt-8">
-            <!-- Loading Skeleton -->
             <template x-if="loading">
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                     <template x-for="i in 6" :key="i">
@@ -126,7 +123,6 @@
                 </div>
             </template>
 
-            <!-- Produk Ada -->
             <template x-if="!loading && filteredProducts.length > 0">
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                     <template x-for="product in filteredProducts" :key="product.id">
@@ -151,14 +147,20 @@
                 </div>
             </template>
 
-            <!-- Produk Kosong -->
-            <template x-if="!loading && filteredProducts.length === 0">
-                <p class="text-center text-gray-500 mt-6">Barang tidak ada</p>
-            </template>
+                <template x-if="!loading && filteredProducts.length === 0">
+                    <div class="flex flex-col items-center justify-center py-20">
+                        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="bx bx-package text-4xl text-gray-400"></i>
+                        </div>
+                        <p class="text-center text-gray-500 text-lg font-medium">Barang tidak ada</p>
+                        <p class="text-center text-gray-400 text-sm mt-2">Coba ubah kata kunci pencarian atau filter</p>
+                    </div>
+                </template>
         </div>
     </div>
 
-    <!-- FOOTER -->
+    </main>
+
     <footer class="bg-gray-50 text-gray-700 animate-slideUp font-space">
         <div class="max-w-6xl mx-auto px-6 md:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
             <div class="flex flex-col space-y-3">
@@ -212,8 +214,6 @@
         </div>
     </footer>
 
-
-    <!-- AlpineJS Component -->
     <script>
     function productFilter({ products }) {
         return {
