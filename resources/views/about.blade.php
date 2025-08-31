@@ -55,7 +55,7 @@
             <div class="flex flex-col space-y-4 px-6 py-5">
                 <div class="group" x-data="{ show: false }">
                     <button @click="show = !show" class="flex items-center justify-between w-full text-left">
-                        <span>Page All</span>
+                        <span><a href="/">Page All</span>
                         <i class='bx bx-chevron-down text-xl' :class="show ? 'rotate-180' : ''"></i>
                     </button>
                     <div x-show="show" x-transition class="mt-3 pl-3 space-y-2 text-sm text-gray-700">
